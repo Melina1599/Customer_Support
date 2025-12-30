@@ -1,0 +1,19 @@
+# Docker específicos
+.docker/
+*.tar.gz
+*.tar
+
+# Datos y Volúmenes
+postgres_data/
+mysql_data/
+volumes/
+
+# Seguridad y Variables de Entorno
+.env
+.env.local
+.env.*.local
+
+# Dependencias
+node_modules/
+__pycache__/
+vendor/

@@ -1,0 +1,46 @@
+services:
+  # Servicio 1: PostgreSQL
+  metabase-db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports: 
+      - "5433:5432"
+
+  # Servicio 2: Metabase
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase_app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - metabase-db
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: ${DB_NAME}
+      MB_DB_PORT: 5432
+      MB_DB_USER: ${DB_USER}
+      MB_DB_PASS: ${DB_PASSWORD}
+      MB_DB_HOST: metabase-db
+
+  #servicio  3: python app
+  data-pipeline:
+    build: . 
+    depends_on:
+      - metabase-db
+    environment:
+      DB_HOST: metabase-db 
+      DB_PORT: 5432        
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+    volumes:      
+      - .:/app 
+
+volumes:
+  postgres_data:
