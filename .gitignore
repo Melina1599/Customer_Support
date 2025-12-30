@@ -17,3 +17,12 @@ volumes/
 node_modules/
 __pycache__/
 vendor/
+
+# Archivos específicos de Python
+*.pyc                 
+.pytest_cache/        
+.coverage             
+
+# Archivos específicos del sistema operativo o del editor
+Thumbs.db            
+.vscode/             
