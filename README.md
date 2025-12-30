@@ -1,7 +1,12 @@
-Análisis y Descripción de la Base de Datos Transaccional
-El origen de datos para este proyecto es el dataset "Customer IT Support - Ticket Dataset" de Kaggle. Este conjunto de datos simula un entorno real de gestión de incidencias de soporte de TI y está diseñado para tareas de clasificación de texto y análisis de servicio al cliente multilingüe.
-Estructura de Columnas Clave:
-La base de datos se caracteriza por columnas heterogéneas, enfocadas en capturar los detalles completos de un ticket de soporte:
+# Customer IT Support - Proyecto de Análisis de Datos
+
+## Análisis y Descripción de la Base de Datos Transaccional
+
+El origen de datos para este proyecto es el dataset "**Customer IT Support - Ticket Dataset**" de [Kaggle](www.kaggle.com). Este conjunto de datos simula un entorno real de gestión de incidencias de soporte de TI y está diseñado para tareas de **clasificación de texto** y **análisis de servicio al cliente multilingüe**.
+
+### Estructura de Columnas Clave
+La base de datos se caracteriza por columnas heterogéneas, enfocadas en capturar los detalles completos de un ticket de soporte.
+
 Identificadores y Contexto:
 Queue: Departamento de destino (ej. Soporte Técnico, RRHH).
 Language: Idioma del ticket (ej. es, en, de, fr, pt).
@@ -35,22 +40,25 @@ Identificación de Problemas Recurrentes: Determinar las 10 Categorías y Tags m
 Gestión de Urgencias: Analizar si los Tipos de tickets (Incidente vs. Solicitud) están alineados con la Prioridad Crítica asignada.
 Calidad del Servicio: Medir la distribución de tickets por Idioma y la longitud promedio de las Answer para identificar posibles diferencias en la calidad del servicio multilingüe.
 
-Estructura del proyecto
+## Estructura del proyecto
 project/
 ├── data/
 │   ├── raw/
 │   └── processed_data/
+├── docs/
+│   └── scripts de creacion e insercion de datos en postgre
 ├── src/
 │   ├── cleaning_scripts/
-│   │   ├── __init__.py  # Necesario para que sea un paquete
-│   │   ├── clean_tickets_multi_lang.py
-│   │   └── clean_tickets_german.py
-│   ├── main.py  # Coordina las llamadas
-│   └── db_scripts.py 
+│   │   ├── __init__.py   
+│   │   └── scripts de limpieza individuales
+│   ├── data_cleaning_pipeine.py 
+│   └── validate_master.py y load_to_postgres.py
 ├── README.md
+├── archivos .ignore
+└── archivos docker
 
 
-Enlaces a colab para EDA
+## Enlaces a colab para EDA
 * german
     * 5: https://colab.research.google.com/drive/1BW2bkIdiRn8jV9ROUzF5-wWUdKmdOKcf#scrollTo=xYLh0RtGTo3G
     * '0': https://colab.research.google.com/drive/14y_iLSFjMrDzH_oxh4kgOpQZn9bspTym#scrollTo=-cBvJy2b-rLS
